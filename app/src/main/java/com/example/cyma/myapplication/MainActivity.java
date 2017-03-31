@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity implements FragmentA.OnFragm
 
     }
     public void removeA(View view) {
-        FragmentA fA = new FragmentA();
+        FragmentA fA = (FragmentA) fm.findFragmentByTag("A");
         FragmentTransaction ft = fm.beginTransaction();
         if (fA != null) {
             ft.remove(fA);
@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity implements FragmentA.OnFragm
 
     }
     public void removeB(View view) {
-        FragmentB fB = new FragmentB();
+        FragmentB fB = (FragmentB) fm.findFragmentByTag("B");
         FragmentTransaction ft = fm.beginTransaction();
         if (fB != null){
             ft.remove(fB);
