@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">My Application</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="param1">param1</string>
+    <string name="param2">param2</string>
+    <string name="addA">addA</string>
+    <string name="addB">addB</string>
+    <string name="B">B</string>
+    <string name="A">A</string>
+    <string name="failedtoremoveA">failed to remove fragment, fragment A is not added before</string>
+    <string name="failedToRemoveB">failed to remove fragment, fragment B is not added before</string>
+    <string name="fragmentEmpty">fragment manager is empty</string>
+    <string name="removeA">remove A</string>
+    <string name="removeB">remove B</string>
+    <string name="replaceWithA">replace With A</string>
+    <string name="replaceWithB">replace With B</string>
+    <string name="clearBS">clear backstack</string>
+
+
+</resources>
