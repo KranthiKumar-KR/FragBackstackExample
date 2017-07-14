@@ -95,6 +95,38 @@
             android:layout_toRightOf="@+id/addB"
             android:text="backstack count" />
 
+        <Button
+            android:id="@+id/addC"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/addA"
+            android:layout_toLeftOf="@+id/addB"
+            android:layout_toStartOf="@+id/addB"
+            android:onClick="addC"
+            android:text="ADD C" />
+
+        <Button
+            android:id="@+id/removec"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/addC"
+            android:layout_marginLeft="12dp"
+            android:layout_marginStart="12dp"
+            android:layout_toEndOf="@+id/addA"
+            android:layout_toRightOf="@+id/addA"
+            android:onClick="removeC"
+            android:text="REMOVE C" />
+
+        <Button
+            android:id="@+id/replaceWithC"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/replacewithB"
+            android:layout_toEndOf="@+id/replacewithB"
+            android:layout_toRightOf="@+id/replacewithB"
+            android:onClick="replaceWithC"
+            android:text="REPLACE WITH C" />
+
     </RelativeLayout>
 
     <LinearLayout

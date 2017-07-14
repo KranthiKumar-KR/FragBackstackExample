@@ -13,8 +13,9 @@ import android.widget.Toast;
 
 import com.example.cyma.myapplication.fragments.FragmentA;
 import com.example.cyma.myapplication.fragments.FragmentB;
+import com.example.cyma.myapplication.fragments.FragmentC;
 
-public class MainActivity extends AppCompatActivity implements FragmentA.OnFragmentInteractionListener, FragmentB.OnFragmentInteractionListener{
+public class MainActivity extends AppCompatActivity implements FragmentA.OnFragmentInteractionListener, FragmentB.OnFragmentInteractionListener, FragmentC.OnFragmentInteractionListener{
     static android.app.FragmentManager fm;
     TextView tv;
     Button clearBS, count;
@@ -58,6 +59,14 @@ public class MainActivity extends AppCompatActivity implements FragmentA.OnFragm
         tv.append("added B \n");
 
     }
+    public void addC(View view) {
+        FragmentC fC = new FragmentC();
+        FragmentTransaction ft = fm.beginTransaction();
+        ft.add(R.id.group1, fC, "C");
+        ft.addToBackStack("addC");
+        tv.append("added C \n");
+        ft.commit();
+    }
     public void removeA(View view) {
         FragmentA fA = (FragmentA) fm.findFragmentByTag("A");
         FragmentTransaction ft = fm.beginTransaction();
@@ -82,8 +91,19 @@ public class MainActivity extends AppCompatActivity implements FragmentA.OnFragm
             ft.commit();
         } else
             Toast.makeText(this, R.string.failedToRemoveB, Toast.LENGTH_SHORT).show();
+    }
 
-
+    public void removeC(View view) {
+        FragmentC fC = (FragmentC) fm.findFragmentByTag("C");
+        FragmentTransaction ft = fm.beginTransaction();
+        if (fC != null){
+            ft.remove(fC);
+            ft.addToBackStack("removeC");
+            tv.append("removed C \n");
+            ft.commit();
+        } else {
+            Toast.makeText(this, "failed to remove fragment, fragment C is not added before", Toast.LENGTH_SHORT).show();
+        }
     }
     public void replaceWithA(View view) {
 
@@ -110,7 +130,19 @@ public class MainActivity extends AppCompatActivity implements FragmentA.OnFragm
             Toast.makeText(this, "fragment manager is empty", Toast.LENGTH_SHORT).show();
 
     }
-    public void clearBS() {
+    public void replaceWithC(View view) {
+        FragmentC fC = new FragmentC();
+        if (fC != null) {
+            FragmentTransaction ft = fm.beginTransaction();
+            ft.replace(R.id.group1, fC, "C");
+            ft.addToBackStack("replaceWithC");
+            tv.append("replaceWithC \n");
+            ft.commit();
+        } else
+            Toast.makeText(this, "fragment manager is empty", Toast.LENGTH_SHORT).show();
+
+    }
+    public void clearBS() throws IllegalStateException{
 //        FragmentManager fm = this.getSupportFragmentManager();
         for(int i = 0; i < fm.getBackStackEntryCount(); ++i) {
             fm.popBackStack();
@@ -128,6 +160,11 @@ public class MainActivity extends AppCompatActivity implements FragmentA.OnFragm
 
     @Override
     public void onFragmentInteractionB() {
+
+    }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
 
     }
 }
