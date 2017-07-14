@@ -15,9 +15,9 @@ import com.example.cyma.myapplication.fragments.FragmentA;
 import com.example.cyma.myapplication.fragments.FragmentB;
 
 public class MainActivity extends AppCompatActivity implements FragmentA.OnFragmentInteractionListener, FragmentB.OnFragmentInteractionListener{
-    android.app.FragmentManager fm;
+    static android.app.FragmentManager fm;
     TextView tv;
-    Button clearBS;
+    Button clearBS, count;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,10 +26,17 @@ public class MainActivity extends AppCompatActivity implements FragmentA.OnFragm
         fm = getFragmentManager();
         tv = (TextView) findViewById(R.id.scrollingtext);
         clearBS = (Button) findViewById(R.id.clearBS);
+        count = (Button) findViewById(R.id.count);
         clearBS.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 clearBS();
+            }
+        });
+        count.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showCount();
             }
         });
     }
@@ -39,6 +46,7 @@ public class MainActivity extends AppCompatActivity implements FragmentA.OnFragm
         ft.add(R.id.group1, fA, getString(R.string.A));
         ft.addToBackStack(getString(R.string.addA));
         ft.commit();
+        tv.append("added A \n");
 
     }
     public void addB(View view) {
@@ -47,6 +55,7 @@ public class MainActivity extends AppCompatActivity implements FragmentA.OnFragm
         ft.add(R.id.group1, fB, getString(R.string.B));
         ft.addToBackStack(getString(R.string.addB));
         ft.commit();
+        tv.append("added B \n");
 
     }
     public void removeA(View view) {
@@ -55,6 +64,7 @@ public class MainActivity extends AppCompatActivity implements FragmentA.OnFragm
         if (fA != null) {
             ft.remove(fA);
             ft.addToBackStack("removeA");
+            tv.append("removed A \n");
             ft.commit();
         } else {
             Toast.makeText(this, R.string.failedtoremoveA, Toast.LENGTH_SHORT).show();
@@ -68,6 +78,7 @@ public class MainActivity extends AppCompatActivity implements FragmentA.OnFragm
         if (fB != null){
             ft.remove(fB);
             ft.addToBackStack("removeB");
+            tv.append("removed B \n");
             ft.commit();
         } else
             Toast.makeText(this, R.string.failedToRemoveB, Toast.LENGTH_SHORT).show();
@@ -81,6 +92,7 @@ public class MainActivity extends AppCompatActivity implements FragmentA.OnFragm
             FragmentTransaction ft = fm.beginTransaction();
             ft.replace(R.id.group1, fA, "A");
             ft.addToBackStack("replaceWithA");
+            tv.append("replaceWithA \n");
             ft.commit();
         } else
             Toast.makeText(this, R.string.fragmentEmpty, Toast.LENGTH_SHORT).show();
@@ -92,16 +104,21 @@ public class MainActivity extends AppCompatActivity implements FragmentA.OnFragm
             FragmentTransaction ft = fm.beginTransaction();
             ft.replace(R.id.group1, fB, "B");
             ft.addToBackStack("replaceWithB");
+            tv.append("replaceWithB \n");
             ft.commit();
         } else
             Toast.makeText(this, "fragment manager is empty", Toast.LENGTH_SHORT).show();
 
     }
     public void clearBS() {
-        FragmentManager fm = this.getSupportFragmentManager();
+//        FragmentManager fm = this.getSupportFragmentManager();
         for(int i = 0; i < fm.getBackStackEntryCount(); ++i) {
             fm.popBackStack();
         }
+        tv.append("cleared backstack \n");
+    }
+    public void showCount() {
+        tv.append("" +fm.getBackStackEntryCount() + " \n");
     }
 
     @Override

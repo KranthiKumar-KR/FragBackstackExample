@@ -84,6 +84,17 @@
             android:layout_marginStart="12dp"
             android:layout_marginTop="27dp" />
 
+        <Button
+            android:id="@+id/count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/clearBS"
+            android:layout_marginLeft="18dp"
+            android:layout_marginStart="18dp"
+            android:layout_toEndOf="@+id/addB"
+            android:layout_toRightOf="@+id/addB"
+            android:text="backstack count" />
+
     </RelativeLayout>
 
     <LinearLayout
@@ -113,6 +124,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/scrollingtext"
                 android:text=""
+                android:textSize="20sp"
                 />
         </ScrollView>
 

@@ -11,6 +11,6 @@
         android:layout_height="61dp"
         android:text="This is fragment A"
         android:layout_gravity="center"
-        android:textSize="30sp"/>
+        android:textSize="20sp"/>
 
 </FrameLayout>
